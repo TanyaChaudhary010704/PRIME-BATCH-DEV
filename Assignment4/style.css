@@ -56,4 +56,8 @@ nav{
   border: 3px solid #cbb67c;
   margin-left: 20px;
   cursor: pointer;
+  transition: 1s;
+}
+.icon-div:hover{
+  border: 8px dashed #cbb67c;
 }
