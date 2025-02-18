@@ -46,7 +46,7 @@ const getInput = (stdInfo) => {
   let marksObj = {};
   for (let i = 1; i <= n; i++) {
     [key, value] = prompt(
-      `Enter Subject${i}:Marks of Subject${i} seperated by space:`
+      `Enter Subject${i} , Marks of Subject${i} seperated by ':' :`
     ).split(":");
     marksObj[key] = value;
   }
