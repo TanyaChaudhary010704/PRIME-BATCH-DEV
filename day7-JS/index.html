@@ -7,22 +7,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <form onsubmit="handleFormSubmit(event)">
-    <input type="email" placeholdler="email" name="email" required>
-    <input type="text" placeholdler="name" name="name" required>
-    <input type="text" placeholdler="city" name="city" required>
-    <input type="submit">
-  </form>
-  <br>
-  <hr>
-  <br>
-  <select onchange="handleSelect(event)">
-    <!-- <option value="Aligarh">Aligarh</option>
-    <option value="Ghaziabad">Ghaziabad</option>
-    <option value="Modinagar">Modinagar</option> -->
-  </select>
-
-  <div id="root"></div>
+  <div class="outer-container">
+    <div class="section1"><form onsubmit="handleFormSubmit(event)">
+      <div class="form-container">
+        <h1>Make Card</h1>
+      <label>Email</label>
+      <br>
+      <input type="email" name="email" required>
+      <br>
+      <label>Name</label>
+      <br>
+      <input type="text" name="name" required>
+      <br>
+      <label>City</label>
+      <br>
+      <input type="text" name="city" required>
+      <br>
+      <input type="submit">
+      </div>
+    </form></div>
+    <div class="section2">
+      <select onchange="handleSelect(event)">
+        <!-- <option value="Aligarh">Aligarh</option>
+        <option value="Ghaziabad">Ghaziabad</option>
+        <option value="Modinagar">Modinagar</option> -->
+      </select>
+    
+      <div id="root"></div>
+    </div>
+  </div>
+  
+  
   <script src="script.js"></script>
 </body>
 </html>
