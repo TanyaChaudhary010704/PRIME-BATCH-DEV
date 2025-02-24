@@ -44,7 +44,7 @@ header{
   display: flex;
 }
 header input{
-  width: 80vw;
+  width: 60vw;
   padding: 1rem;
 }
 header button{

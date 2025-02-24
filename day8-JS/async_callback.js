@@ -93,7 +93,12 @@ const handleCall = () => {
 // console.log(obj2);
 
 //---------------------------------------------
+
+//JS object -->JSON = JSON.stringify
+//JSON --> JsObject = JSON.parse  
+
 let products = [];
+
 const getData = (e) => {
   const pr = fetch("https://dummyjson.com/products");//returns promise
   //console.log(pr)
@@ -118,8 +123,9 @@ getData();
 function showUI(products) {
   let parent = document.querySelector(".parent");
   //console.log("Data :", data);
+  parent.innerHTML = "";
   products.forEach((item) => {
-    const {title,images,price,discountPercentage
+    const {id,title,images,price,discountPercentage
       ,rating} = item;
     const card = document.createElement("div");
     card.className = "card";
@@ -133,7 +139,7 @@ function showUI(products) {
         }% off)</h2>
         <h4>Rating :${rating}</h4>
         <button>View</button>
-        <button>Add To Cart</button>
+        <button onclick="addToCart(event,${id})">Add To Cart</button>
       </div>
     `;
     parent.appendChild(card);
@@ -147,11 +153,27 @@ const search = () => {
   console.log(arr);
   parent.innerHTML = "";
   showUI(arr);
-  //storeData(arr);
+  storeData(arr);
 }
 
-//JS object -->JSON = JSON.stringify
-//JSON --> JsObject = JSON.parse  
+function addToCart(e,id) {
+  console.log(e.target);
+  console.log(id);
+  const idx = products.findIndex((ele) => ele.id == id);
+  const oldData = localStorage.getItem("cart");
+  const arr = JSON.parse(oldData || "[]");
+  arr.push(products[idx]);
+  localStorage.setItem("cart",JSON.stringify(arr));
+}
+
+function showCart() {
+  const oldData = localStorage.getItem("cart");
+  const arr = JSON.parse(oldData || "[]");
+  console.log(products);
+  console.log(arr);
+  showUI(arr);
+}
+
 
 function storeData(data) {
   const oldData = localStorage.getItem("searches");
@@ -159,7 +181,6 @@ function storeData(data) {
   arr.push(data);
   localStorage.setItem("searches",JSON.stringify(arr));
 }  
-
 function showHistory() {
   const oldData = localStorage.getItem("searches");
   const arr = JSON.parse(oldData || "[]");
