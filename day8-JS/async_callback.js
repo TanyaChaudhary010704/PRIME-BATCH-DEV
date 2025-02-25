@@ -149,7 +149,7 @@ function showUI(products) {
 const search = () => {
   let parent = document.querySelector(".parent");
   let input = document.querySelector('input');
-  let arr = products.filter(product => product.category == input.value);
+  let arr = products.filter(product => product.title.toLowerCase().includes(input.value));
   console.log(arr);
   parent.innerHTML = "";
   showUI(arr);
