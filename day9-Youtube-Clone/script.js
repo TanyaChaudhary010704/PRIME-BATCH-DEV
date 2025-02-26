@@ -5727,10 +5727,20 @@ const showUI = (list) => {
     newCard.className = 'card';
     newCard.innerHTML = `
     <img
-    src="${obj.videoThumbnails[1].url}" width="100%" id='${idx}' 
+    src="${obj.videoThumbnails[0].url}" width="100%" id='${idx}' 
     onmouseover='handleHover(event,${idx})'>
-    <h6>${obj.author}</h6>
-    <h4>${obj.title}</h4>
+    <div class="text-container">
+      <div>
+      <img src="${obj.videoThumbnails.pop().url}">
+      </div>
+      <div>
+      <h4>${obj.title}</h4>
+      <p>${obj.author}</p>
+      <p>${obj.viewCountText} • ${obj.publishedText}</p>
+      </div>
+    </div>
+    
+    
     `;
     newCard.addEventListener('click', () => {
       window.open(`./video.html?id=${obj.videoId}`,"_top")
@@ -5739,10 +5749,10 @@ const showUI = (list) => {
   })
 };
 
-const handleHover = (e, idx) => {
-  const lastImg = dummyData[idx].videoThumbnails.pop();
-  e.target.src = lastImg.url;
-}
+// const handleHover = (e, idx) => {
+//   const lastImg = dummyData[idx].videoThumbnails.pop();
+//   e.target.src = lastImg.url;
+// }
 
 const handleSearch = (e) => {
   window.open(`./search.html?text=${e.target.value}`);
