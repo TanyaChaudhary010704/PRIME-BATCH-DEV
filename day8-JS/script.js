@@ -77,8 +77,96 @@ function showCart() {
   showUI(arr);
 }
 
-function viewDetail(e,id) {
-  window.open("./viewDetail.html");
+const detail = [
+  {
+    "id": 1,
+    "title": "Essence Mascara Lash Princess",
+    "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "category": "beauty",
+    "price": 9.99,
+    "discountPercentage": 7.17,
+    "rating": 4.94,
+    "stock": 5,
+    "tags": [
+        "beauty",
+        "mascara"
+    ],
+    "brand": "Essence",
+    "sku": "RCH45Q1A",
+    "weight": 2,
+    "dimensions": {
+        "width": 23.17,
+        "height": 14.43,
+        "depth": 28.01
+    },
+    "warrantyInformation": "1 month warranty",
+    "shippingInformation": "Ships in 1 month",
+    "availabilityStatus": "Low Stock",
+    "reviews": [
+        {
+            "rating": 2,
+            "comment": "Very unhappy with my purchase!",
+            "date": "2024-05-23T08:56:21.618Z",
+            "reviewerName": "John Doe",
+            "reviewerEmail": "john.doe@x.dummyjson.com"
+        },
+        {
+            "rating": 2,
+            "comment": "Not as described!",
+            "date": "2024-05-23T08:56:21.618Z",
+            "reviewerName": "Nolan Gonzalez",
+            "reviewerEmail": "nolan.gonzalez@x.dummyjson.com"
+        },
+        {
+            "rating": 5,
+            "comment": "Very satisfied!",
+            "date": "2024-05-23T08:56:21.618Z",
+            "reviewerName": "Scarlett Wright",
+            "reviewerEmail": "scarlett.wright@x.dummyjson.com"
+        }
+    ],
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 24,
+    "meta": {
+        "createdAt": "2024-05-23T08:56:21.618Z",
+        "updatedAt": "2024-05-23T08:56:21.618Z",
+        "barcode": "9164035109868",
+        "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
+  }
+]
+
+function viewDetail(e, id) {
+  const arr = products.find(product => product.id == id);
+  console.log(arr);
+  const body = document.querySelector("body");
+  const container = document.createElement("div");
+  container.className = "container";
+  body.innerHTML = "";
+  container.innerHTML = `
+    <img src="${arr.images[0]}" width="200px">
+    <hr>
+    <br>
+    <h1>${arr.title}</h1>
+    <h2>${arr.price} (${arr.discountPercentage} % off)</h2>
+    <p>Description : ${arr.description}</p>
+    <p>Brand : ${arr.brand}</p>
+    <p>Category : ${arr.category}</p>
+    <p>Rating : ${arr.rating}</p>
+    <p>weight : ${arr.weight}</p>
+    <p>Width : ${arr.dimensions.width}</p>
+    <p>Height : ${arr.dimensions.height}</p>
+    <p>Depth : ${arr.dimensions.depth}</p>
+    <p>Return Policy : ${arr.returnPolicy}</p>
+    <p>Warranty : ${arr.warrantyInformation}</p>
+    <p>Shipping : ${arr.shippingInformation}</p>
+  `;
+  body.appendChild(container);
+
 }
 
 function storeData(data) {
