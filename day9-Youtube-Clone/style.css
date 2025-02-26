@@ -25,9 +25,13 @@ main{
   color: #fff;
   overflow: hidden;
   border-radius: 15px;
+  cursor: pointer;
 }
 .card>img{
   border-radius:15px;
+}
+.card img:hover{
+  transform: scale(.95);
 }
 .text-container{
   margin-top: .5rem;
@@ -42,6 +46,7 @@ main{
 .text-container p{
   opacity: .5;
 }
+
 header{
   color: white;
   display: flex;
@@ -106,6 +111,7 @@ sup{
 .fa-youtube span{
   color: #fff;
 }
+
 /* sidebar */
 aside{
   color: #fff;
