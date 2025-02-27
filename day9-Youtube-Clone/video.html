@@ -162,6 +162,8 @@
     const iframe = document.querySelector('iframe');
     const [a,videoId] = window.location.search.split("=");
     iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    
+
 
     const youtubeHistory = localStorage.getItem('yt_history');
     if(!youtubeHistory){
@@ -178,12 +180,16 @@
     const addComment = () => {
       if(textarea.value!=""){
         const oldComments = localStorage.getItem("comments");
-        const arr = JSON.parse(oldComments || "[]");
-        let obj = {};
-        obj[videoId] = textarea.value;
-        console.log(obj);
-        arr.push(obj);
-        localStorage.setItem("comments",JSON.stringify(arr));
+        const obj = JSON.parse(oldComments || "{}");
+        if(obj[videoId]!=null){
+          obj[videoId].push(textarea.value);
+        }
+        else{
+          obj[videoId]=[];
+          obj[videoId].push(textarea.value);
+        }
+        localStorage.setItem("comments",JSON.stringify(obj));
+        showComment(obj);
         handleCancel();
       }  
     }
@@ -191,6 +197,18 @@
     const handleCancel =()=>{
       textarea.value = "";
     }
+
+    let comments = document.querySelector(".comments");
+    const showComment = (obj)=>{
+      let arr = (obj[videoId] || []);
+      arr.forEach(ele=>{
+        let div = document.createElement('div');
+        div.innerText = ele;
+        comments.appendChild(div);
+      })
+    }
+    let c = localStorage.getItem("comments") || {};
+    showComment(c);
 
 
   </script>
