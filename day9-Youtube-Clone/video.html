@@ -233,6 +233,7 @@
       };
 
       let comments = document.querySelector(".comments-container");
+
       const showComment = (obj) => {
         comments.innerHTML = "";
         let arr = obj[videoId] || [];
@@ -243,7 +244,11 @@
           comments.appendChild(div);
         });
       };
+
       let c = JSON.parse(localStorage.getItem("comments") || {});
+
+      console.log("writing");
+
       showComment(c);
     </script>
 

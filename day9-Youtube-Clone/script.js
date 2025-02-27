@@ -5752,13 +5752,20 @@ const showUI = (list) => {
   })
 };
 
+const input = document.querySelector('input');
+
 const handleSearch = () => {
-  const input = document.querySelector('input');
   if (input.value != null) {
     let list = dummyData.filter((data) => data.title.toLowerCase().includes(input.value.toLowerCase()));
     console.log(list);
     showUI(list);
   } 
 }
+
+input.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+      handleSearch();
+  }
+});
 
 showUI(dummyData);
