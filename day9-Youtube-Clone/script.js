@@ -5721,14 +5721,17 @@ const dummyData = [
 ];
 
 const root = document.querySelector('main');
+
 const showUI = (list) => {
+  root.innerHTML = "";
   list.forEach((obj,idx) => {
     const newCard = document.createElement('div');
     newCard.className = 'card';
     newCard.innerHTML = `
+    <div class="img-container">
     <img
-    src="${obj.videoThumbnails[0].url}" width="100%" id='${idx}' 
-    onmouseover='handleHover(event,${idx})'>
+    src="${obj.videoThumbnails[0].url}" width="100%" id='${idx}'>
+    </div>
     <div class="text-container">
       <div>
       <img src="${obj.videoThumbnails.pop().url}">
@@ -5749,13 +5752,13 @@ const showUI = (list) => {
   })
 };
 
-// const handleHover = (e, idx) => {
-//   const lastImg = dummyData[idx].videoThumbnails.pop();
-//   e.target.src = lastImg.url;
-// }
-
-const handleSearch = (e) => {
-  window.open(`./search.html?text=${e.target.value}`);
+const handleSearch = () => {
+  const input = document.querySelector('input');
+  if (input.value != null) {
+    let list = dummyData.filter((data) => data.title.toLowerCase().includes(input.value.toLowerCase()));
+    console.log(list);
+    showUI(list);
+  } 
 }
 
 showUI(dummyData);

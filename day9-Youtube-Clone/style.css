@@ -6,12 +6,13 @@
   font-family: 'roboto',sans-serif;
 }
 body{
+  color: white;
   min-height: 100vh;
   display: grid;
   grid-template-rows: 4rem auto;
   grid-template-columns: 15rem 1fr;
 }
-main{
+main, #iframe-container{
   background-color: #0f0e0e;
   display: grid;
   grid-template-columns: repeat(auto-fit,25rem);
@@ -73,8 +74,9 @@ header input{
   padding: .75rem ;
   width: 80%;
   border-radius: 20px 0px 0px 20px;
-  background-color: #111;
+  background-color: transparent;
   border: 1px solid #ffffff33;
+  color: white;
 }
 header i{
   font-size: 1.5rem;
@@ -87,7 +89,7 @@ header i{
 header i:hover{
   background-color: #444;
 }
-header button{
+header .create{
   border-radius: 40px;
   padding: .75rem;
   background-color: #222;
@@ -95,6 +97,11 @@ header button{
   color: white;
   font-size: 1rem;
   cursor: pointer;
+}
+header button{
+  border: none;
+  background-color: transparent;
+  color: white;
 }
 sup{
   opacity: .5;
@@ -147,4 +154,49 @@ aside h4{
 aside p{
   margin-top:1rem ;
   opacity: .5;
+}
+section{
+  background-color: #0f0e0e;
+}
+section h1{
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+/* video.html */
+.video-container{
+  color: white;
+  background-color: #0f0e0e;
+  padding: 1rem;
+}
+.video-container iframe{
+  margin: 1rem 0;
+  width: 100%;
+  height: 70vh;
+}
+.video-container .comments textarea{
+  color: white;
+  resize: none;
+  width: 70vw;
+  display: block;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff5c;
+  margin: 1rem 0;
+}
+.video-container .comments textarea:focus{
+  outline: none;
+  border-bottom: 1px solid #fff;
+}
+.video-container .comments button{
+  border-radius: 40px;
+  padding: 1rem 2rem;
+  background-color: #222;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.video-container .comments button:hover{
+  background-color: #666;
 }
