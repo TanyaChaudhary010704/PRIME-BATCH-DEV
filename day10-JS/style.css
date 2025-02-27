@@ -1,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav{
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: azure;
+
+}
+input{
+  padding:.75rem 2rem;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+.search-container{
+  position: relative;
+}
+#locations{
+  position: absolute;
+  background-color: #111;
+  color: #fff;
+}
+p{
+  padding: 0.75rem;
+  border-bottom: 1px solid #999;
+  font-size: 1rem;
+}
+p:last-of-type{
+  border-bottom: none;
+
+}
+p:hover{
+  cursor: pointer;
+  background-color: #333;
+}

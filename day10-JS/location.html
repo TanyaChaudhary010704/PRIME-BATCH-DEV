@@ -8,9 +8,12 @@
 </head>
 <body>
   <nav>
-    <input type="text" onkeydown="handleSearch(event)">
+    <div class="search-container">
+      <input type="text" onkeyup="handleSearch(event)">
+      <div id="locations"></div>
+    </div> 
   </nav>
-  <div id="cards-container"></div>
-  <script src="script.js"></script>
+  <div id="location-info"></div>
+  <script src="location.js"></script>
 </body>
 </html>
