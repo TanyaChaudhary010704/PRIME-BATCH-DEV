@@ -207,6 +207,15 @@
         localStorage.setItem("yt_history", JSON.stringify(newHistory));
       } else {
         const newHistory = JSON.parse(youtubeHistory);
+        let idx = newHistory.indexOf(videoId);
+        console.log(idx);
+        if(idx!=-1){
+          newHistory.splice(idx, 1);
+        }
+        // let present = newHistory.includes(videoId);
+        // if(!present){
+        //   newHistory.push(videoId);
+        // }
         newHistory.push(videoId);
         localStorage.setItem("yt_history", JSON.stringify(newHistory));
       }
