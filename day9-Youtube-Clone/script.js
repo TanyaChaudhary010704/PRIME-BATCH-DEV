@@ -8269,7 +8269,7 @@ const input = document.querySelector("input");
 //-----------------------------------------------------------------------------------------------
 
 const showSearchResultUI = (videoId) => {
-  suggestionsContainer.classList.display = "none";
+  //suggestionsContainer.classList.display = "none";
   root.innerHTML = "";
   if (videoId) {
     const newCard = document.createElement("div");
@@ -8294,8 +8294,17 @@ const showSearchResultUI = (videoId) => {
 //-----------------------------------------------------------------------------------------------
 
 suggestionsContainer.addEventListener("click", (e) => {
-  suggestionsContainer.innerHTML = "";
+  console.log("clicked container 1");
+  //suggestionsContainer.innerHTML = "";
   showSearchResultUI(e.target.id);
+  suggestionsContainer.style.display = "none";
+
+});
+input.addEventListener("focusout", (e) => {
+  //suggestionsContainer.innerHTML = "";
+  setTimeout(() => { 
+    suggestionsContainer.style.display="none";
+  },500)
 });
 
 //-----------------------------------------------------------------------------------------------
@@ -8329,9 +8338,9 @@ const handleSearch = (e) => {
 
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    suggestionsContainer.innerHTML = "";
     showSearchResultUI(null);
-    suggestionsContainer.innerHTML = "";
+    //suggestionsContainer.innerHTML = "";
+    suggestionsContainer.style.display="none";
   }
 });
 
