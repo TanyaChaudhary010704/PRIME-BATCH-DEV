@@ -14,9 +14,11 @@
           <span>YouTube <sup>IN</sup></span>
         </i>
       </div>
-      <div>
-        <input type="text" name="search-text" />
-        <button onclick="handleSearch()">
+      <div class="search-container">
+        <input type="text" onkeyup="handleSearch(event)"
+        />
+        <div id="search-suggestions"></div>
+        <button >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
         

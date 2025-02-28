@@ -32,6 +32,7 @@ const showLocations = (data) => {
     root.appendChild(p);
   });
 }
+
 let timeoutId = null;
 const handleSearch = (e) => {
   if (timeoutId) {

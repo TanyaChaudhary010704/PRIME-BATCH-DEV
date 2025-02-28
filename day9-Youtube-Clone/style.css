@@ -253,3 +253,35 @@ section h1{
   background-color: #111;
   padding: 1rem;
 }
+
+/* suggestions */
+
+.search-container{
+  position: relative;
+}
+#search-suggestions{
+  /* padding: 1rem; */
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  width: 80%;
+  background-color: #222;
+  border-radius: 20px;
+  color: #fff;
+  height: fit-content;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: none;
+}
+#search-suggestions p{
+  padding: 1rem;
+  font-size: .85rem;
+}
+#search-suggestions p:last-of-type{
+  border-bottom: none;
+
+}
+#search-suggestions p:hover{
+  cursor: pointer;
+  background-color: #333;
+}
