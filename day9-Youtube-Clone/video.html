@@ -14,9 +14,10 @@
           <span>YouTube <sup>IN</sup></span>
         </i>
       </div>
-      <div>
-        <input type="text" name="search-text" />
-        <button onclick="handleSearch()">
+      <div class="search-container">
+        <input type="text" oninput="handleSearch(event)" />
+        <div id="search-suggestions"></div>
+        <button class="search-btn">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
 
@@ -171,54 +172,65 @@
       <p>© 2025 Google LLC</p>
     </aside>
 
-    <div class="video-container">
-      <iframe
-        width="560"
-        height="315"
-        src=""
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+    <main></main>
 
-      <div class="comments">
-        <h1><span>0</span> Comments</h1>
-        <textarea
-          name="comment"
-          id="comment"
-          placeholder="Add comment"
-        ></textarea>
-        <button onclick="handleCancel()">cancel</button>
-        <button onclick="addComment()">comment</button>
-        <div class="comments-container"></div>
-      </div>
-    </div>
+    <script src="script.js"></script>
 
     <script>
       const iframe = document.querySelector("iframe");
       const [a, videoId] = window.location.search.split("=");
-      iframe.src = `https://www.youtube.com/embed/${videoId}`;
 
-      const youtubeHistory = localStorage.getItem("yt_history");
-      if (!youtubeHistory) {
-        const newHistory = [videoId];
-        localStorage.setItem("yt_history", JSON.stringify(newHistory));
-      } else {
-        const newHistory = JSON.parse(youtubeHistory);
-        let idx = newHistory.indexOf(videoId);
-        console.log(idx);
-        if(idx!=-1){
-          newHistory.splice(idx, 1);
-        }
-        // let present = newHistory.includes(videoId);
-        // if(!present){
-        //   newHistory.push(videoId);
-        // }
-        newHistory.push(videoId);
-        localStorage.setItem("yt_history", JSON.stringify(newHistory));
+      const showVideo =()=>{
+        root.innerHTML="";
+        const videoContainer = document.createElement('div');
+        videoContainer.className = 'video-container';
+        videoContainer.innerHTML=`
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/${videoId}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+    
+          <div class="comments">
+            <h1><span>0</span> Comments</h1>
+            <textarea
+              name="comment"
+              id="comment"
+              placeholder="Add comment"
+            ></textarea>
+            <button onclick="handleCancel()">cancel</button>
+            <button onclick="addComment()">comment</button>
+            <div class="comments-container"></div>
+          </div>
+        `;
+        root.appendChild(videoContainer);
       }
+      showVideo();
+
+
+      const addToHistory =()=>{
+        const youtubeHistory = localStorage.getItem("yt_history");
+        if (!youtubeHistory) {
+          const newHistory = [videoId];
+          localStorage.setItem("yt_history", JSON.stringify(newHistory));
+        } else {
+          const newHistory = JSON.parse(youtubeHistory);
+          let idx = newHistory.indexOf(videoId);
+          console.log(idx);
+          if (idx != -1) {
+            newHistory.splice(idx, 1);
+          }
+          newHistory.push(videoId);
+          localStorage.setItem("yt_history", JSON.stringify(newHistory));
+        }
+      }
+      addToHistory();
+      
 
       const textarea = document.querySelector("textarea");
       const addComment = () => {
@@ -242,21 +254,22 @@
       };
 
       let comments = document.querySelector(".comments-container");
+      let commentsCount = document.querySelector(".comments h1 span");
 
       const showComment = (obj) => {
         comments.innerHTML = "";
         let arr = obj[videoId] || [];
-
+        let count =0;
         arr.forEach((ele) => {
+          count += 1;
           let div = document.createElement("div");
           div.innerText = ele;
           comments.appendChild(div);
+          commentsCount.innerText = count;
         });
       };
 
       let c = JSON.parse(localStorage.getItem("comments") || {});
-
-      console.log("writing");
 
       showComment(c);
     </script>

@@ -12,7 +12,7 @@ body{
   grid-template-rows: 4rem auto;
   grid-template-columns: 15rem 1fr;
 }
-main, #iframe-container , .video-container{
+main {
   background-color: #0f0e0e;
   display: grid;
   grid-template-columns: repeat(auto-fit,24rem);
@@ -202,7 +202,8 @@ section h1{
 
 /* video.html */
 .video-container{
-  margin-left: 14.5rem;
+  justify-self:center ;
+  width: auto ;
   height: fit-content;
   display: flex;
   flex-direction: column;
