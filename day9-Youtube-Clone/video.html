@@ -30,7 +30,29 @@
       </div>
     </header>
 
-    <aside>
+    <aside class="precise-sidebar">
+      <ul>
+        <li>
+          <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+        </li>
+        <li>
+          <a href="./history.html"
+            ><i class="fa-solid fa-clock-rotate-left"></i>History</a
+          >
+        </li>
+        <li>
+          <a href="index.html"><i class="fa-solid fa-house"></i>Trending</a>
+        </li>
+        <li>
+          <a href="index.html"><i class="fa-regular fa-user"></i>You</a>
+        </li>
+        <li>
+          <a href="index.html"><i class="fa-solid fa-download"></i>Downloads</a>
+        </li>
+      </ul>
+    </aside>
+
+    <aside class="detailed-sidebar">
       <ul>
         <li>
           <i class="fa-solid fa-house"></i><a href="./index.html">Home</a>
@@ -180,11 +202,11 @@
       const iframe = document.querySelector("iframe");
       const [a, videoId] = window.location.search.split("=");
 
-      const showVideo =()=>{
-        root.innerHTML="";
-        const videoContainer = document.createElement('div');
-        videoContainer.className = 'video-container';
-        videoContainer.innerHTML=`
+      const showVideo = () => {
+        root.innerHTML = "";
+        const videoContainer = document.createElement("div");
+        videoContainer.className = "video-container";
+        videoContainer.innerHTML = `
           <iframe
             src="https://www.youtube.com/embed/${videoId}"
             title="YouTube video player"
@@ -207,11 +229,10 @@
           </div>
         `;
         root.appendChild(videoContainer);
-      }
+      };
       showVideo();
 
-
-      const addToHistory =()=>{
+      const addToHistory = () => {
         const youtubeHistory = localStorage.getItem("yt_history");
         if (!youtubeHistory) {
           const newHistory = [videoId];
@@ -226,9 +247,8 @@
           newHistory.push(videoId);
           localStorage.setItem("yt_history", JSON.stringify(newHistory));
         }
-      }
+      };
       addToHistory();
-      
 
       const textarea = document.querySelector("textarea");
       const addComment = () => {
@@ -257,7 +277,7 @@
       const showComment = (obj) => {
         comments.innerHTML = "";
         let arr = obj[videoId] || [];
-        let count =0;
+        let count = 0;
         arr.forEach((ele) => {
           count += 1;
           let div = document.createElement("div");

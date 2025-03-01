@@ -22,23 +22,28 @@
 let dummySearchData = {};
 
 const getDataSearch = (text) => {
-  const res = fetch(`https://youtube138.p.rapidapi.com/search/?q=${text}&hl=en&gl=US`, {
-    method: "GET",
-    headers: {
-      "x-rapidapi-host": "youtube138.p.rapidapi.com",
-      "x-rapidapi-key":"69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+  const res = fetch(
+    `https://youtube138.p.rapidapi.com/search/?q=${text}&hl=en&gl=US`,
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "youtube138.p.rapidapi.com",
+        "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+      },
     }
-  });
-  res.then((res) => {
-    const pr2 = res.json();
-    pr2.then((data) => {
-      dummySearchData = data;
-      showSuggestions(data);
+  );
+  res
+    .then((res) => {
+      const pr2 = res.json();
+      pr2.then((data) => {
+        dummySearchData = data;
+        showSuggestions(data);
+      });
     })
-  }).catch((err) => {
-    alert(err.message);
-  })
-}
+    .catch((err) => {
+      alert(err.message);
+    });
+};
 
 //-----------------------------------------------------------------------------------------------
 
@@ -5974,12 +5979,11 @@ suggestionsContainer.addEventListener("click", (e) => {
   //suggestionsContainer.innerHTML = "";
   showSearchResultUI(e.target.id);
   suggestionsContainer.style.display = "none";
-
 });
 input.addEventListener("focusout", (e) => {
-  setTimeout(() => { 
-    suggestionsContainer.style.display="none";
-  },500)
+  setTimeout(() => {
+    suggestionsContainer.style.display = "none";
+  }, 500);
 });
 
 //-----------------------------------------------------------------------------------------------
@@ -6013,7 +6017,7 @@ const handleSearch = (e) => {
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     showSearchResultUI(null);
-    suggestionsContainer.style.display="none";
+    suggestionsContainer.style.display = "none";
   }
 });
 
@@ -6022,15 +6026,27 @@ searchBtn.addEventListener("click", function () {
     root.innerHTML = `
     <p>Nothing to search</p>
     `;
-  }
-  else {
+  } else {
     console.log(input.value);
     showSearchResultUI(null);
-    suggestionsContainer.style.display="none";
+    suggestionsContainer.style.display = "none";
   }
-     
 });
 
 //-----------------------------------------------------------------------------------------------
+
+const menuBar = document.querySelector(".fa-bars");
+const detailedSidebar = document.querySelector(".detailed-sidebar");
+const preciseSidebar = document.querySelector(".precise-sidebar");
+menuBar.addEventListener("click", () => {
+  if (detailedSidebar.style.display != "none") {
+    detailedSidebar.style.display = "none";
+    console.log("showing detailed sidebar");
+  } else {
+    detailedSidebar.style.display = "block";
+  }
+});
+
+//--------------------------------------------------------------------------------
 
 showUI(dummyData);
