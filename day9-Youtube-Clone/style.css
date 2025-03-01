@@ -46,7 +46,7 @@ main {
   padding: 1em 0;
   justify-content: center;
   overflow-y: auto;
-  align-items: center;
+  /* align-items: center; */
 }
 .card {
   height: 20em;
@@ -282,13 +282,17 @@ aside p {
     display: block;
   }
   aside {
-    grid-column: 1 / span 2;
+    padding: 0;
+    grid-column: 1 / span 1;
   }
   main {
-    grid-column: 3 / span 10;
+    grid-column: 2 / span 11;
   }
   header {
     gap: 0;
+  }
+  .video-container iframe {
+    height: 50vh;
   }
 }
 @media (max-width: 900px) {
@@ -297,6 +301,9 @@ aside p {
   }
   header > div {
     gap: 0;
+  }
+  .video-container iframe {
+    height: 40vh;
   }
 }
 @media (max-width: 683px) {
