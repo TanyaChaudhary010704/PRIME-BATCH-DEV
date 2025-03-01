@@ -12,6 +12,7 @@ body {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   font-size: 16px;
+  background-color: #0f0e0e;
 }
 header {
   grid-column: 1 / span 12;
