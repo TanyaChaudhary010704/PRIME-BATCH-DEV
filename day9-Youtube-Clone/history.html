@@ -53,7 +53,7 @@
       </ul>
     </aside>
 
-    <aside class="detailed-sidebar">
+    <aside class="detailed-sidebar" style="display: none;">
       <ul>
         <li>
           <i class="fa-solid fa-house"></i><a href="./index.html">Home</a>
@@ -208,13 +208,15 @@
           const newCard = document.createElement("div");
           newCard.classList = "card video-card";
           newCard.innerHTML = `
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" controls=0 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="overlay"></div>
         `;
+
           root.appendChild(newCard);
-          // newCard.addEventListener("click", () => {
-          //   console.log("entered");
-          //   window.open(`./video.html?id=${videoId}`, "_top");
-          // });
+          newCard.addEventListener("click", () => {
+            console.log("entered");
+            window.open(`./video.html?id=${videoId}`, "_top");
+          });
         });
       };
       showHistory();
