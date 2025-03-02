@@ -1,43 +1,20 @@
-// const getDataTrending = () => {
-//   const res = fetch("https://youtube138.p.rapidapi.com/v2/trending", {
-//     method: "GET",//optional :: default is "GET"
-//     headers: {// for including headers
-//       "x-rapidapi-host": "youtube138.p.rapidapi.com",
-//       "x-rapidapi-key":"69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
-//     }
-//   });
-//   res.then((res) => {
-//     const pr2 = res.json();
-//     pr2.then((data) => {
-//       console.log(data);
-//     })
-//   }).catch((err) => {
-//     alert(err.message);
-//   })
-// }
-//getDataTrending();
+//-------------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------------------------
-
-let dummySearchData = {};
-
-const getDataSearch = (text) => {
-  const res = fetch(
-    `https://youtube138.p.rapidapi.com/search/?q=${text}&hl=en&gl=US`,
-    {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "youtube138.p.rapidapi.com",
-        "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
-      },
-    }
-  );
+const getDataTrending = () => {
+  const res = fetch("https://youtube138.p.rapidapi.com/v2/trending", {
+    method: "GET", //optional :: default is "GET"
+    headers: {
+      // for including headers
+      "x-rapidapi-host": "youtube138.p.rapidapi.com",
+      "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+    },
+  });
   res
     .then((res) => {
       const pr2 = res.json();
       pr2.then((data) => {
-        dummySearchData = data;
-        showSuggestions(data);
+        showUI(data.list);
+        //console.log(data);
       });
     })
     .catch((err) => {
@@ -45,7 +22,8 @@ const getDataSearch = (text) => {
     });
 };
 
-//-----------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
+
 
 const dummyData = [
   {
@@ -5908,9 +5886,65 @@ const dummyData = [
   },
 ];
 
+const getDataHome = () => {
+  const res = fetch("https://youtube138.p.rapidapi.com/home/?hl=en&gl=US", {
+    method: "GET", //optional :: default is "GET"
+    headers: {
+      // for including headers
+      "x-rapidapi-host": "youtube138.p.rapidapi.com",
+      "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+    },
+  });
+  res
+    .then((res) => {
+      const pr2 = res.json();
+      pr2.then((data) => {
+        console.log(data);
+        showSearchResultUI(data);
+      });
+    })
+    .catch((err) => {
+      alert(err.message);
+    });
+};
+//getDataHome();
+
+//-----------------------------------------------------------------------------------------------
+
+let dummySearchData = {};
+
+const getDataSearch = (text) => {
+  const res = fetch(
+    `https://youtube138.p.rapidapi.com/search/?q=${text}&hl=en&gl=US`,
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "youtube138.p.rapidapi.com",
+        "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+      },
+    }
+  );
+  res
+    .then((res) => {
+      const pr2 = res.json();
+      pr2.then((data) => {
+        dummySearchData = data;
+        showSuggestions(data);
+      });
+    })
+    .catch((err) => {
+      alert(err.message);
+    });
+};
+
 //-----------------------------------------------------------------------------------------------
 
 const root = document.querySelector("main");
+const suggestionsContainer = document.querySelector("#search-suggestions");
+const input = document.querySelector("input");
+const searchBtn = document.querySelector(".search-btn");
+
+//-----------------------------------------------------------------------------------------------
 
 const showUI = (list) => {
   root.innerHTML = "";
@@ -5932,8 +5966,6 @@ const showUI = (list) => {
       <p>${obj.viewCountText} • ${obj.publishedText}</p>
       </div>
     </div>
-    
-    
     `;
     newCard.addEventListener("click", () => {
       window.open(`./video.html?id=${obj.videoId}`, "_top");
@@ -5944,40 +5976,41 @@ const showUI = (list) => {
 
 //-----------------------------------------------------------------------------------------------
 
-const suggestionsContainer = document.querySelector("#search-suggestions");
-const input = document.querySelector("input");
-const searchBtn = document.querySelector(".search-btn");
-
-//-----------------------------------------------------------------------------------------------
-
-const showSearchResultUI = (videoId) => {
+const showSearchResultUI = (data) => {
+  let list = data.contents;
+  console.log(list);
   root.innerHTML = "";
-  if (videoId) {
+  list.forEach((ele) => {
     const newCard = document.createElement("div");
-    newCard.classList = "card video-card";
+    newCard.className = "card";
     newCard.innerHTML = `
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          `;
+    <div class="img-container">
+    <img
+    src="${ele.video.thumbnails[0].url}" width="100%" id='${ele.video.videoId}'>
+    </div>
+    <div class="text-container">
+      <div>
+      <img src="${ele.video.thumbnails[0].url}">
+      </div>
+      <div>
+      <h4>${ele.video.title}</h4>
+      <p>${ele.video.author.title}</p>
+      <p>${ele.video.stats.views} • ${ele.video.publishedTimeText}</p>
+      </div>
+    </div>
+    `;
+    newCard.addEventListener("click", () => {
+      window.open(`./video.html?id=${ele.video.videoId}`, "_top");
+    });
     root.appendChild(newCard);
-  }
-
-  dummySearchData.contents.forEach((obj) => {
-    let vId = obj.video.videoId;
-    const newCard2 = document.createElement("div");
-    newCard2.className = "card";
-    newCard2.innerHTML = `
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${vId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        `;
-    root.appendChild(newCard2);
   });
 };
 
 //-----------------------------------------------------------------------------------------------
 
 suggestionsContainer.addEventListener("click", (e) => {
-  console.log("clicked container 1");
-  //suggestionsContainer.innerHTML = "";
-  showSearchResultUI(e.target.id);
+  input.value = e.target.innerText;
+  showSearchResultUI(dummySearchData);
   suggestionsContainer.style.display = "none";
 });
 input.addEventListener("focusout", (e) => {
@@ -5992,11 +6025,10 @@ const showSuggestions = (data) => {
   suggestionsContainer.style.display = "inline";
   suggestionsContainer.innerHTML = "";
   console.log(data);
-  const suggestions = data.contents;
+  const suggestions = data.refinements;
   suggestions.forEach((ele) => {
     const p = document.createElement("p");
-    p.id = ele.video.videoId;
-    p.innerText = ele.video.author.title;
+    p.innerText = ele;
     suggestionsContainer.appendChild(p);
   });
 };
@@ -6014,9 +6046,11 @@ const handleSearch = (e) => {
   }, 800);
 };
 
+//-----------------------------------------------------------------------------------------------
+
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    showSearchResultUI(null);
+    showSearchResultUI(dummySearchData);
     suggestionsContainer.style.display = "none";
   }
 });
@@ -6027,8 +6061,7 @@ searchBtn.addEventListener("click", function () {
     <p>Nothing to search</p>
     `;
   } else {
-    console.log(input.value);
-    showSearchResultUI(null);
+    showSearchResultUI(dummySearchData);
     suggestionsContainer.style.display = "none";
   }
 });
@@ -6048,5 +6081,4 @@ menuBar.addEventListener("click", () => {
 });
 
 //--------------------------------------------------------------------------------
-
 showUI(dummyData);
