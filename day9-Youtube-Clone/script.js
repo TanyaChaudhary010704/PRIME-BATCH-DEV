@@ -21,7 +21,6 @@ const getDataTrending = () => {
       alert(err.message);
     });
 };
-getDataTrending();
 //-----------------------------------------------------------------------------------------------
 
 let dummySearchData = {};
