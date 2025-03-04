@@ -6,7 +6,7 @@ const getDataTrending = () => {
     headers: {
       // for including headers
       "x-rapidapi-host": "youtube138.p.rapidapi.com",
-      "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+      "x-rapidapi-key": "feeafdb05emsh3ca48f6cf54c170p18543cjsnae5031e85830",
     },
   });
   res
@@ -33,7 +33,7 @@ const getDataSearch = (text) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "youtube138.p.rapidapi.com",
-        "x-rapidapi-key": "69153dd839msha76ccede3a8c8aap1d3966jsned16456981aa",
+        "x-rapidapi-key": "feeafdb05emsh3ca48f6cf54c170p18543cjsnae5031e85830",
       },
     }
   );
