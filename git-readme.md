@@ -39,3 +39,16 @@ import and export methods
 **vite**
 ->npm create vite@latest 
 
+classbased components and functional components
+dev dependencies used in development
+-> npm run dev or npx vite
+in package.json if we change dev to some other name then we have to run -> npm run name
+dev build preview lint
+
+when redirecting to page by anchor tag -> auto refresh website and this will load all files again which will not work without internet
+
+to avoid refreshing , use Link tag as -> <Link to="/">Home Link</Link>
+
+
+
+
