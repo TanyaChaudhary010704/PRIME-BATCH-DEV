@@ -1,25 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import Card from "./components/card.js";
+import Card, { Title } from "./components/card.js";
+import {Button} from "./components/button.js";
 
-const domRoot = document.getElementById('parent');
+const domRoot = document.getElementById("parent");
 const reactRoot = ReactDOM.createRoot(domRoot);
-
-const Card = ({username}) => {
-  // console.log(abc.username);
-  // const { username } = abc;
-  console.log(username);
-  return (
-    <div>
-      <h3>Hello {username}</h3>
-      <p>Nice to meet you!</p>
-    </div>
-  )
-}
 
 const App = () => {
   return (
     <div>
+      <Button color="submit">Submit</Button>
+      <Button color="danger">Cancel</Button>
       <Card></Card>
+      <Card username={Title}></Card>
       <Card username="Tanya"></Card>
       <Card username="Tanisha"></Card>
       <Card username="Riya" />

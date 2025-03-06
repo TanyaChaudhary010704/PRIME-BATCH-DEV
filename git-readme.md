@@ -30,3 +30,12 @@ import ReactDom from "react-dom";
 to start ->npx parcel index.html
 dist contains all the output files 
 source map - maps our js file 
+
+import and export methods
+**Default Methods**
+->import Card from "./components/card.js";
+->export default Card;
+
+**vite**
+->npm create vite@latest 
+
