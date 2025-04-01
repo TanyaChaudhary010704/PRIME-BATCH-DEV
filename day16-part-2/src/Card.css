@@ -1,0 +1,13 @@
+.card{
+  background-color: antiquewhite;
+  width: 500px;
+  padding: 1rem;
+  margin: 1rem;
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+}
+.card img{
+  height: 100px;
+  position: relative;
+}
