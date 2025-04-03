@@ -1,0 +1,50 @@
+Node.js is the runtime env of js
+Server - should accept req and give some response
+Why bundlers are not needed in backend?
+--> in frontend the code file need to be transmitted to client so bundlers are required but in backend only the output or res is given to client
+
+Node Steps->
+start with node -- *npm init -y
+run file -- *node app.js
+
+ES MODULE->
+*Named Export--                         Import--
+  export const obj={...}             import {obj} from '...' 
+  export const func=()=>{...}             import {func} from '...'
+*Default Export--  
+  const func={...}
+  export default func;             import Temp from '...'
+
+COMMON JS->
+*Named Export--                      Import--
+  const obj={...}              const {obj} = require("...")
+  module.exports={obj}              const {obj} = require("...")
+  exports.obj={...}
+*Default Export--  
+  const obj={...}
+  module.exports=obj;              const Temp = require("...")
+
+MODULES->
+  internal -- which are installed by node
+  external -- remaining
+  user-defined -- written by us 
+
+APIs->helps interaction of one applicaiton with other
+  synchronous--blocking 
+  promises
+  callback
+
+node cache the modules which are imported . so if it is imported in another module then it does not load it again just use it.
+
+What happens when we require a module?->
+--> resolving / Loading -> Wrapping ->Execution -> Returing Exports -> Caching
+
+    Resolving -> user-defined?,internal file?, external file?
+    wrapping -> variables of one module will never collide with that of other
+
+    How wrapping is done?
+    --> IIFE(immediately invoke function expression)
+    (()=>{....})()
+    for every module, node use function expression invokation to bound the variable in function scope so they do not collide
+
+    --> parameters of iife ((module,exports,__dirname)=>{})();
