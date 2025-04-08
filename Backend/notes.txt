@@ -48,3 +48,15 @@ What happens when we require a module?->
     for every module, node use function expression invokation to bound the variable in function scope so they do not collide
 
     --> parameters of iife ((module,exports,__dirname)=>{})();
+
+HTTP -->
+  res.setHeader('content-type', 'text/html');
+  ** we can set response side header like this . text/html means text is interpretted as html
+
+  res.end("") 
+  ** we can write html is res.end() 
+  ** res can contain - string,and few other things not array, obj
+
+SSR --> show whole page at a time (node/server)
+    --> running js on SSR increases rank of page
+CSR --> show some parts which are loaded before first (react)
