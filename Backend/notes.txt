@@ -60,3 +60,15 @@ HTTP -->
 SSR --> show whole page at a time (node/server)
     --> running js on SSR increases rank of page
 CSR --> show some parts which are loaded before first (react)
+
+EXPRESS ->
+  * npm init
+  * npm i express
+  * npm i nodemon
+  * To run -> npx nodemon app.js
+Middlewares ->
+  * app.use() is used for Middlewares
+  * middleware , /get , /post , middleware , error handler
+  * if the route matches only first middleware will be executed
+  * else other is also executed  
+MVC -> (Model View Controller)
