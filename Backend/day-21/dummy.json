@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Boat Rockerz 255 Pro+ Wireless Earphones",
+    "price": 1499,
+    "stock": 25,
+    "tags": ["electronics", "audio", "wireless"]
+  },
+  {
+    "title": "Samsung Galaxy M14 5G Smartphone",
+    "price": 12999,
+    "stock": 15,
+    "tags": ["mobile", "electronics", "5g"]
+  },
+  {
+    "title": "Lenovo IdeaPad Slim 3 Laptop",
+    "price": 37990,
+    "stock": 10,
+    "tags": ["laptop", "electronics", "student"]
+  },
+  {
+    "title": "Philips 1000-Watt Dry Iron",
+    "price": 949,
+    "stock": 30,
+    "tags": ["home appliances", "iron", "philips"]
+  },
+  {
+    "title": "Puma Men’s Casual Sneakers",
+    "price": 2999,
+    "stock": 20,
+    "tags": ["fashion", "shoes", "men"]
+  },
+  {
+    "title": "Fastrack Reflex Beat+ Smartwatch",
+    "price": 1495,
+    "stock": 18,
+    "tags": ["smartwatch", "wearable", "fastrack"]
+  },
+  {
+    "title": "Sony WH-CH520 Bluetooth Headphones",
+    "price": 4490,
+    "stock": 12,
+    "tags": ["electronics", "audio", "sony"]
+  },
+  {
+    "title": "AmazonBasics Backpack for Laptops",
+    "price": 1199,
+    "stock": 22,
+    "tags": ["bags", "laptop", "accessory"]
+  },
+  {
+    "title": "Himalaya Purifying Neem Face Wash 200ml",
+    "price": 185,
+    "stock": 50,
+    "tags": ["beauty", "face wash", "himalaya"]
+  },
+  {
+    "title": "Noise Buds VS104 Truly Wireless Earbuds",
+    "price": 1199,
+    "stock": 17,
+    "tags": ["audio", "earbuds", "noise"]
+  },
+  {
+    "title": "Apple iPhone 13 (128GB) - Midnight",
+    "price": 58999,
+    "stock": 5,
+    "tags": ["mobile", "apple", "electronics"]
+  },
+  {
+    "title": "Mi Smart LED TV 43 Inch 4K",
+    "price": 26999,
+    "stock": 8,
+    "tags": ["tv", "electronics", "mi"]
+  },
+  {
+    "title": "Wipro 9W LED Bulb - Pack of 4",
+    "price": 299,
+    "stock": 60,
+    "tags": ["lighting", "home", "wipro"]
+  },
+  {
+    "title": "Nivea Men Dark Spot Reduction Cream",
+    "price": 179,
+    "stock": 40,
+    "tags": ["grooming", "cream", "nivea"]
+  },
+  {
+    "title": "Dell Wireless Keyboard and Mouse Combo",
+    "price": 2199,
+    "stock": 14,
+    "tags": ["accessory", "keyboard", "dell"]
+  },
+  {
+    "title": "Redmi Power Bank 20000mAh",
+    "price": 1799,
+    "stock": 25,
+    "tags": ["electronics", "powerbank", "redmi"]
+  },
+  {
+    "title": "Lakme 9 to 5 Primer + Matte Lipstick",
+    "price": 499,
+    "stock": 35,
+    "tags": ["beauty", "lipstick", "lakme"]
+  },
+  {
+    "title": "Wildcraft HypaShield W95 Face Mask - Pack of 3",
+    "price": 299,
+    "stock": 100,
+    "tags": ["health", "mask", "wildcraft"]
+  },
+  {
+    "title": "Syska 1000W Hair Dryer",
+    "price": 749,
+    "stock": 19,
+    "tags": ["beauty", "hair dryer", "syska"]
+  },
+  {
+    "title": "Prestige Induction Cooktop 1200-Watt",
+    "price": 2399,
+    "stock": 9,
+    "tags": ["kitchen", "appliance", "prestige"]
+  },
+  {
+    "title": "Samsung 256GB EVO microSD Card",
+    "price": 2299,
+    "stock": 13,
+    "tags": ["memory", "storage", "samsung"]
+  },
+  {
+    "title": "Campus Men’s Maxico Running Shoes",
+    "price": 1495,
+    "stock": 28,
+    "tags": ["shoes", "running", "campus"]
+  },
+  {
+    "title": "Tide Plus Detergent Powder 6kg",
+    "price": 699,
+    "stock": 42,
+    "tags": ["home", "cleaning", "detergent"]
+  },
+  {
+    "title": "ASUS ROG Strix Gaming Mouse",
+    "price": 3599,
+    "stock": 11,
+    "tags": ["gaming", "mouse", "asus"]
+  },
+  {
+    "title": "Lenskart Blu Zero Power Glasses",
+    "price": 999,
+    "stock": 26,
+    "tags": ["eyewear", "glasses", "bluelight"]
+  }
+]

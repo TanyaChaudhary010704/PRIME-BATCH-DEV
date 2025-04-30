@@ -72,3 +72,12 @@ Middlewares ->
   * if the route matches only first middleware will be executed
   * else other is also executed  
 MVC -> (Model View Controller)
+M->DB
+V->UI/react
+C->Business Logic
+
+.env -> sensitive data is stored in key value pairs 
+npm i express nodemon dotenv mongodb mongoose
+dotenv -> loads env file in current folder
+morgan -> http req logger middleware for node.js
+app.js(send to)->router(send to)->controller(send to)-> servicesA, ServicesB -> db operations
