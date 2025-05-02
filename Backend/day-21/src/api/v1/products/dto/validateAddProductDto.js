@@ -1,22 +1,39 @@
-const validateAddProductDto = (req,res,next) => {
+const validateAddProductDto = (req, res, next) => {
   try {
-    console.log("Validating create product request");
-    const { title, price } = req.body;
-    if(title === undefined || title === null || typeof(title)!=="string" || title.length<2) {
-      throw new Error("Title is invalid");
+    console.log("Validating create product request!");
+    const { title, price, stock } = req.body;
+
+    if (
+      title === undefined ||
+      title === null ||
+      typeof title !== "string" ||
+      title.length < 2
+    ) {
+      throw new Error("Invalid Title");
     }
-    if(price === undefined || price === null || Number(price)===NaN) {
-      throw new Error("Price is invalid");
+
+    if (
+      price === undefined ||
+      price === null ||
+      Number(price) === NaN ||
+      Number(price) <= 0
+    ) {
+      throw new Error("Invalid Price");
     }
-    if((stock !== undefined && stock !== null) && (Number(price)===NaN || Number(stock)<0)) {
-      throw new Error("Stock is invalid");
+
+    if (stock !== undefined && price !== null) {
+      if (Number(stock) === NaN || Number(stock) <= 0) {
+        throw new Error("Invalid Stock");
+      }
     }
-  } catch (error) {
+
+    next();
+  } catch (err) {
     res.status(400);
     res.json({
       status: "fail",
-      message: error.message,
+      message: err.message,
     });
   }
-}
+};
 module.exports = { validateAddProductDto };

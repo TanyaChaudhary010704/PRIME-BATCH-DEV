@@ -1,21 +1,33 @@
-const {ProductModel} = require("../../../../models/product-schema.js");
+const { ProductModel } = require("../../../../models/product-schema.js");
 const addProductsController = async (req, res) => {
-  
   try {
-    const newProduct = await ProductModel.create({
-      title: "Parle-G",
-      price:"10"
-    })
+    console.log("Processing create product request!");
+    const obj = req.body;
+    const newProduct = await ProductModel.create(obj);
+
     res.status(201);
     res.json({
-      success: true,
-      message: "Product added successfully",
+      status: "success",
       data: {
         product: newProduct,
       },
-    })
-  } catch (error) {
-    console.log(error.message);
+    });
+  } catch (err) {
+    console.log(err.name);
+    console.log(err.code);
+    if (err.name === "MongoServerError" && err.code === 11000) {
+      res.status(400);
+      res.json({
+        status: "fail",
+        err: err.message,
+      });
+    } else {
+      res.status(500);
+      res.json({
+        status: "fail",
+        err: "Internal Server Error",
+      });
+    }
   }
 };
 module.exports = { addProductsController };
